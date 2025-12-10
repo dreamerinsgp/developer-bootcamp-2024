@@ -16,10 +16,12 @@ export async function GET(request: Request) {
     links: {
       actions: [
         {
+          type: "transaction",
           label: "Vote for Crunchy",
           href: "/api/vote?candidate=Crunchy",
         },
         {
+          type: "transaction",
           label: "Vote for Smooth",
           href: "/api/vote?candidate=Smooth",
         }
@@ -66,6 +68,7 @@ export async function POST(request: Request) {
 
   const response = await createPostResponse({
     fields: {
+      type: "transaction",
       transaction: transaction
     }
   });
