@@ -26,10 +26,14 @@ describe('Create a system account', () => {
       puppetProgram.programId
     );
 
+    // Use future timestamps: start now (0 means immediate), end in 1 year from now
+    const now = Math.floor(Date.now() / 1000);
+    const oneYearFromNow = now + (365 * 24 * 60 * 60); // 1 year in seconds
+    
     await puppetProgram.methods.initializePoll(
       new anchor.BN(1),
         new anchor.BN(0),
-        new anchor.BN(1759508293),
+        new anchor.BN(oneYearFromNow),
         "test-poll",
         "description",
     ).rpc();
